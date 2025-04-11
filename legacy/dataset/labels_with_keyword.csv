@@ -1,0 +1,221 @@
+idx,label,keyword
+1,Agricultural Equipment Services,Agricult
+2,Soil Nutrient Application Services,Soil
+3,Pesticide Application Services,Pesticide
+4,Ornamental Plant Nurseries,Plant
+5,Landscaping Services,Landscap
+6,Gardening Services,Gardening
+7,Tree Services - Pruning / Removal,Tree
+8,Veterinary Services,Veterinary
+9,Veterinary Clinics,Clinics
+10,Pet Boarding Services,Pet
+11,Animal Day Care Services, Animal
+12,Pet Grooming Services,Pet
+13,Animal Training Services,Animal
+14,Veterinary Health Centers,Health
+15,Animal Trainers,Animal
+16,Livestock Dealer Services,Livestock
+17,Timber Harvesting Operations,Timber
+18,Fishing and Hunting Services,Fishing
+19,Well Maintenance Services,Well
+20,Field Welding Services,Welding
+21,Sand and Gravel Mining,Mining
+22,Residential Driveway Construction,Driveway
+23,Commercial Driveway Construction,Driveway
+24,Fencing Construction Services,Fencing
+25,Sidewalk Construction Services,Sidewalk
+26,Commercial Irrigation Systems,Irrigation
+27,Residential Drainage Systems,Drainage
+28,Residential Snow Removal,Snow
+29,Commercial Snow Removal,Snow
+30,General Snow Removal Services,Snow
+31,Land Leveling Services,Leveling
+32,Residential Drain Cleaning,Drain
+33,Commercial Drain Cleaning,Drain
+34,Street Cleaning Operations,Street
+35,Conveyor System Installation,Conveyor
+36,Low-Rise Signage Installation,Signage
+37,High-Rise Signage Installation,Signage
+38,Tank Installation Services,Tank
+39,Residential Communication Equipment Installation,Communication
+40,Commercial Communication Equipment Installation,Communication
+41,Low-Rise Glass Installation,Glass
+42,High-Rise Glass Installation,Glass
+43,Industrial Machinery Installation,Machinery
+44,Agricultural Machinery Installation,Machinery
+45,Grain Handling Machinery Installation,Grain
+46,Dock and Pier Construction,Dock
+47,Road and Highway Construction,Road
+48,Road Maintenance Services,Maintenance
+49,Pipeline Construction Services,Pipeline
+50,New Ground Pipeline Installation,Pipeline
+51,Excavation Services,Excavation
+52,Residential Plumbing Services,Plumbing
+53,Commercial Plumbing Services,Plumbing
+54,Industrial Plumbing Services,Plumbing
+55,Boiler Installation Services,Boiler
+56,Boiler Repair Services,Boiler
+57,Steam Services,Steam
+58,Gas Installation Services,Gas
+59,Medical Gas Installation Services,Gas
+60,Fire Protection System Services,Fire
+61,HVAC Installation and Service,HVAC
+62,HVAC Inspections,HVAC
+63,Air Duct Cleaning Services,Air
+64,Water Treatment Services,Water
+65,Residential Electrical Services,Electrical
+66,Commercial Electrical Services,Electrical
+67,Alarm Installation Services,Alarm
+68,Electric Line Construction,Electric Line
+69,Cable Installation Services,Cable
+70,Elevator Installation Services,Elevator
+71,Low-Rise Foundation Construction,Foundation
+72,High-Rise Foundation Construction,Foundation
+73,Precast Concrete Installation,Concrete
+74,Tilt-Up Concrete Services,Concrete
+75,Masonry Construction Services,Masonry
+76,Drywall Services,Drywall
+77,Tile Installation Services,Tile
+78,Carpentry Services,Carpentry
+79,Millwork Services,Millwork
+80,General Handyman Services,Handyman
+81,Insulation Services,Insulation
+82,Painting Services,Painting
+83,Spray Painting Services,Spray
+84,Flooring Installation Services,Floor
+85,Interior Design Services,Interior
+86,Home Staging Services,Home
+87,Sheet Metal Services,Metal
+88,Welding Services,Welding
+89,Structural Steel Erection,Steel
+90,Non-Structural Steel Fabrication,Steel
+91,Windows and Doors Installation,Windows
+92,Well Drilling Services,Well
+93,Directional Drilling Services,Drill
+94,Infrastructure Excavation,Infrastructure
+95,New Ground Excavation,Excavation
+96,Residential Roofing Services,Roof
+97,Roofing Services with Heat Application,Heat
+98,Waterproofing Services,Waterproof
+99,Septic System Services,Septic
+100,Building Cleaning Services,Clean
+101,Fire Safety Equipment Services,Fire
+102,Testing and Inspection Services,Test
+103,Single Family Residential Construction,Family
+104,Single Family Renovation Services,Renovation
+105,Multi-Family Construction Services,Family
+106,Apartment Renovation Services,Apartment
+107,Restoration Services,Restoration
+108,Mobile Home Construction Services,Home
+109,Commercial Construction Services,Commercial
+110,Commercial Renovation Services,Renovation
+111,Swimming Pool Installation Services,Pool
+112,Swimming Pool Maintenance Services,Maintenance
+113,Vacant Building Management,Build
+114,Vacant Land Services,Land
+115,Meat Processing Services,Meat
+116,Seafood Processing Services,Seafood
+117,Dairy Production Services,Dairy
+118,Frozen Food Processing,Food
+119,Ice Production Services,Ice
+120,Canning Services,Canning
+121,Animal Feed Manufacturing,Animal
+122,Pet Food Manufacturing,Pet
+123,Grain Processing Services,Grain
+124,Coffee Processing Services,Coffee
+125,Seed Processing Services,Seed
+126,Bakery Production Services,Bakery
+127,Confectionery Manufacturing,Confectionery
+128,Distilling Services,Distill
+129,Brewery Operations,Brewery
+130,Non-Alcoholic Beverage Manufacturing,Beverage
+131,Oil and Fat Manufacturing,Oil
+132,Rendering Services,Rendering
+133,Textile Manufacturing Services,Textile
+134,Carpet Manufacturing Services,Carpet
+135,Apparel Manufacturing,Apparel
+136,Accessory Manufacturing,Accessory
+137,Children's Clothing Manufacturing,Cloth
+138,Window Treatment Manufacturing,Window
+139,Canvas Manufacturing,Canvas
+140,Rope Production Services,Rope
+141,Tent Manufacturing Services,Tent
+142,Wood Product Manufacturing,Wood
+143,Window and Door Manufacturing,Window
+144,Cabinetry Manufacturing,Cabinetry
+145,Trim Manufacturing,Trim
+146,Pallet Manufacturing,Pallet
+147,Furniture Manufacturing,Furniture
+148,Bedding Manufacturing,Bedding
+149,Paper Production Services,Paper
+150,Stationery Manufacturing,Stationery
+151,Publishing Services,Publish
+152,Printing Services,Print
+153,Gas Manufacturing Services,Gas
+154,Ink Production Services,Ink
+155,Plastic Manufacturing,Plastic
+156,Cosmetic Manufacturing,Cosmetic
+157,Soap Production Services,Soap
+158,Chemical Manufacturing,Chemical
+159,Asphalt Production Services,Asphalt
+160,Rubber Manufacturing,Rubber
+161,Plastic Signage Production,Signage
+162,Media Production Services,Media
+163,Software Manufacturing,Software
+164,Food Processing Services,Food
+165,Pharmaceutical Manufacturing,Pharmaceutical
+166,Laboratory Services,Laboratory
+167,Waste Management Services,Waste
+168,Recycling Services,Recycl
+169,Environmental Consulting,Environmental
+170,Property Management Services,Property
+171,Real Estate Services,Real Estate
+172,Insurance Services,Insurance
+173,Financial Services,Financial
+174,Legal Services,Legal
+175,Consulting Services,Consult
+176,Marketing Services,Market
+177,Human Resources Services,Human
+178,Management Consulting,Management
+179,Business Development Services,Business
+180,Project Management Services,Project
+181,Technology Consulting,Technology
+182,Software Development Services,Software
+183,Data Analysis Services,Data
+184,Market Research Services,Market
+185,Strategic Planning Services,Strategic
+186,Training Services,Train
+187,Public Relations Services,Relations
+188,Event Planning Services,Event
+189,Catering Services,Catering
+190,Travel Services,Travel
+191,Digital Marketing Services,Digital
+192,E-Commerce Services,Commerce
+193,Online Marketing Services,Online
+194,Content Creation Services,Content
+195,Website Development Services,Website
+196,SEO Services,SEO
+197,Social Media Services,Media
+198,Branding Services,Brand
+199,Graphic Design Services,Design
+200,Advertising Services,Advertis
+201,Corporate Training Services,Corporate
+202,Health and Safety Consulting,Health
+203,Food Safety Services,Food
+204,Quality Assurance Services,Quality
+205,Compliance Services,Compliance
+206,Environmental Health Services,Health
+207,Risk Assessment Services,Risk
+208,Crisis Management Services,Crisis
+209,Community Engagement Services,Community
+210,Stakeholder Services,Stakeholder
+211,Corporate Responsibility Services,Responsibility
+212,Fundraising Services,Fundrais
+213,Volunteer Services,Volunteer
+214,Non-Profit Management,Non-Profit
+215,Arts Services,Arts
+216,Sports Management Services,Sports
+217,Fitness Coaching,Fitness
+218,Health Promotion Services,Health
+219,Physical Therapy Services,Therapy
+220,Occupational Health Services,Health

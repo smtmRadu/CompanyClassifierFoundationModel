@@ -1,0 +1,183 @@
+
+    @DeprecationWarning
+    def get_groups(self) -> list[list[str]]:
+        groups = []
+        for i in range(1, 38):
+            df = pl.read_csv(f"labels_groups/group{i}.csv")['label'].to_list()
+            groups.append(df)
+        return groups 
+    @DeprecationWarning
+    def get_ungrouped_labels(self) -> list[str]:
+        df = pl.read_csv("labels_groups/labels_remaining.csv")['label'].to_list()
+        return df
+    @DeprecationWarning
+    def generate_choices_subsets(self, available_pool:list[str], group_size) -> list[str]:
+        random.shuffle(available_pool)
+        subgroups = []
+
+        while len(available_pool) > 0:
+            subset = [available_pool.pop(0)]
+            
+            for i in range(group_size - 1): # one already added at the beginning
+
+                # try add a different type of label
+                added_different_label = None
+                #-------------------------------------------
+                for i in available_pool:
+                    already_appended_words = set(chain.from_iterable(x.lower().split() for x in subset))
+                    this_new_label_words = i.lower().split()
+                    if not any(word in this_new_label_words for word in already_appended_words):
+                        subset.append(i)
+                        added_different_label = i
+                        break
+                        
+                #------------------------------------------
+                # if couldn't add a different type of label, just add the next one
+                if added_different_label is not None:
+                    available_pool.remove(added_different_label)
+                elif len(available_pool) > 0:
+                    subset.append(available_pool.pop(0))
+
+            random.shuffle(subset)
+            subset.append("None of the above")
+            subgroups.append(subset)
+
+        return subgroups
+    @DeprecationWarning
+    def assign_characters_to_answers(self, choice_sets:list[list[str]]):
+        '''
+        Shuffle variants and keep A, B, C, D, E consistent
+        '''
+        new_list:list[list[tuple[str, str]]] = []
+
+        for answer_set in choice_sets:
+            options = []
+            variants = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"]
+            for answer in answer_set:
+                options.append((variants.pop(0), answer))
+
+            new_list.append(options)
+
+        return new_list
+    @DeprecationWarning
+    def generate_appropriate_group_size(self,pool_size):
+        GS = None
+        for d in range(self.max_group_size + 1, 0, -1):
+            if pool_size % d == 0:
+                GS = d
+                break
+        
+        if GS == 1:
+            GS = self.max_group_size
+            if pool_size % GS == 1:
+                GS = 4
+            if pool_size % GS == 1:
+                GS = 3
+            if pool_size % GS == 1:
+                GS = 2
+            if pool_size % GS == 1:
+                GS = 6 # if that number sucks so much
+            if pool_size % GS == 1:
+                GS = 7 # I don't believe it will ever reach this point...
+        return GS
+    @DeprecationWarning
+    def deprecated_perform_tournament(self, company_row, answer_sets):
+        '''
+        Perform tournament base classification, returns a reduced set of labels
+        '''
+        
+        SYSTEM_PROMPT = f'''You are an insurance taxonomist expert that have to classify a company based on the details provided by the user. He gives you a set of answer choices, and you have to select the one that is related to the company. If none are related to the company, select the last choice, which is typically "None of the above".  Write your final answer like this: <box>A</box> or <box>B</box> or <box>C</box> or etc.'''
+        USER_PROMPT = f"Company Description: {company_row[0]}. Business tags: {company_row[1]}. Sector: {company_row[2]}. Category: {company_row[3]}. Niche: {company_row[4]}. "
+        
+        playoff_pool = []
+        playout_pool = []
+        for set_ in tqdm(answer_sets):
+            ANSWERS = f"Answer Choices:\n{"\n".join(x+": "+y for x,y in set_)}"
+            messages = [
+                {
+                    'role':'system',
+                    'content':SYSTEM_PROMPT
+                },
+                {
+                    'role':'user',
+                    'content': USER_PROMPT + "\n" + ANSWERS
+                }
+            ]
+
+            # First try
+            if self.llm == "ollama":
+                response = chat(self.ollama_default_model,messages, stream=False,keep_alive='1m', options={'temperature':self.llm_temperature})
+                response_message = response['message']
+                response_content = response_message['content']
+            elif self.llm == "groq":
+                response = self.groq_client.chat.completions.create(messages=messages, model=self.groq_default_model, temperature=self.llm_temperature)
+                response_message = response.choices[0].message
+                response_content = response_message.content
+            
+            # messages.append(response_message)
+            answer_letter = self.extract_answer_from_response_text(response_content)
+            answer_label = next((tup for tup in set_ if tup[0] == answer_letter), None)
+
+            # if it fails to answer, it seems like it is because there is no good answer to give, so we skip this group
+            if answer_label is None:
+                continue
+
+            if answer_label[1] == "None of the above":
+                continue
+
+            playoff_pool.append(answer_label[1])
+            playout_pool.extend([x[1] for x in set_ if x[1] != "None of the above" and x[1] != answer_label[1]])
+            
+            # messages.append({
+            #      'role':'user',
+            #      'content': str(playoff_pool) + " " + str(playout_pool)
+            # })
+
+            # display_chat(messages)
+
+        return playoff_pool, playout_pool   
+    @DeprecationWarning
+    def perform_ternary_decider(self, company_row, answer_pool):
+        SYSTEM_PROMPT = f'''You are an insurance taxonomy expert. Respond only with YES, MAYBE or NO if the company fits the user-specified category (without elaboration).'''
+        messages = [
+            {
+                'role':'system',
+                'content':SYSTEM_PROMPT
+            },
+            {
+                'role':'user',
+                'content':f'''Company Description:{company_row[0]}
+                Company Keywords: {company_row[1]} {company_row[2]} {company_row[3]} {company_row[4]}
+                '''
+            }   
+        ]
+        new_pool = {
+            'yes':[],
+            'maybe':[],
+            'no':[]
+        }
+        for answer in tqdm(answer_pool):
+            messages.append({
+                'role':'user',
+                'content': f"{answer}?"
+            })
+            response = chat(self.ollama_default_model,messages, stream=False,keep_alive='1m', options={'temperature':0.0000001, 'num_predict':1})
+            
+            
+            response_message = response['message']
+            response_content = response_message['content']
+            # messages.append(response_message)
+            # display_chat(messages)
+            # messages.pop()
+            
+            messages.pop()
+            if response_content.lower() == "yes":
+                new_pool['yes'].append(response_content)
+            elif response_content.lower() == "no":
+                new_pool['no'].append(response_content)
+            elif response_content.lower() == "maybe":
+                new_pool['maybe'].append(response_content)
+            else:
+                continue
+        return new_pool, messages
+    
